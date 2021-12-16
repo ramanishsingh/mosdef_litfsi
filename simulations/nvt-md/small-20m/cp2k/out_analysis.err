@@ -1,0 +1,16 @@
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/formats/xyz.py:71: UserWarning: No matching element found for TF2; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/formats/xyz.py:71: UserWarning: No matching element found for wat; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<TF2 pos=([-0.666  -0.2044  0.3706]), 0 bonds, id: 139725936420624>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<wat pos=([-0.7155 -0.6976 -0.3757]), 0 bonds, id: 139725936236560>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/formats/xyz.py:71: UserWarning: No matching element found for TF2; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/formats/xyz.py:71: UserWarning: No matching element found for wat; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<TF2 pos=([ 0.0358  0.764  -0.6243]), 0 bonds, id: 139725682092048>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/home/rs/anaconda3/envs/litfsi37/lib/python3.7/site-packages/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<wat pos=([ 0.6284 -0.3079 -0.4642]), 0 bonds, id: 139725936281552>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)

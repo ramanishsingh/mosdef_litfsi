@@ -145,7 +145,7 @@ def run_md(job):
 
 @Project.operation
 @Project.pre(has_restart_file)
-@flow.directives(np=48)
+@flow.directives(np=72)
 def restart_md(job):
     from cp2kmdpy import runners_mpi
     import os
