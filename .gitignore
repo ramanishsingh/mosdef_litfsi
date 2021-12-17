@@ -1,6 +1,7 @@
 workspace/
-*.xyz
 slurm*
+com*xyz
+*mbuild*xyz
 *pdos*/
 *err
 *out
