@@ -1,0 +1,538 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Thu Jan 20 10:25:54 EST 2022
+Warning: importing 'simtk.openmm' is deprecated.  Import 'openmm' instead.
+298.0 MD
+The combined trajectory has 38004 frames = 38004 ps 
+r_max is 0.7597 nm
+check index [ 11  22  26  37  41  52  56  67  71  82  86  97 101 112 116 127 131 142]
+The first shell minima of Li-O(TFSI) lies at 2.8738898038864136 \AA
+The first shell minima of Li-O(water) lies at 2.7739298343658447 \AA
+[4, 2, 3, 5, 1, 6, 0, 7, 8, 9, 10]
+[3, 4, 5, 6, 2, 1, 0]
+[0, 1, 2, 3, 4, 5, 6]
+The sum of all freq for one frame is 2.5507841279865278
+[46555  7725  2247   956   488   290   203   125    93    59    34    19
+    20    24    11    16    11    13    11     8     5     9    13     5
+    11    10    10     5    11    18    16    17    19    13    28    32
+    48    74   108   159   255   370   606   998  1679  2952  4898  7767
+  9868  8028]
+i is 0
+local frq is 46555
+sum of all freq is 96940
+ratio is 0.48024551268826077
+i is 1
+local frq is 7725
+sum of all freq is 96940
+ratio is 0.07968846709304725
+i is 2
+local frq is 2247
+sum of all freq is 96940
+ratio is 0.023179286156385395
+i is 3
+local frq is 956
+sum of all freq is 96940
+ratio is 0.00986177016711368
+i is 4
+local frq is 488
+sum of all freq is 96940
+ratio is 0.005034041675263049
+i is 5
+local frq is 290
+sum of all freq is 96940
+ratio is 0.002991541159480091
+i is 6
+local frq is 203
+sum of all freq is 96940
+ratio is 0.0020940788116360636
+i is 7
+local frq is 125
+sum of all freq is 96940
+ratio is 0.0012894573963276254
+i is 8
+local frq is 93
+sum of all freq is 96940
+ratio is 0.0009593563028677532
+i is 9
+local frq is 59
+sum of all freq is 96940
+ratio is 0.0006086238910666392
+i is 10
+local frq is 34
+sum of all freq is 96940
+ratio is 0.00035073241180111407
+i is 11
+local frq is 19
+sum of all freq is 96940
+ratio is 0.00019599752424179906
+i is 12
+local frq is 20
+sum of all freq is 96940
+ratio is 0.00020631318341242006
+i is 13
+local frq is 24
+sum of all freq is 96940
+ratio is 0.0002475758200949041
+i is 14
+local frq is 11
+sum of all freq is 96940
+ratio is 0.00011347225087683103
+i is 15
+local frq is 16
+sum of all freq is 96940
+ratio is 0.00016505054672993604
+i is 16
+local frq is 11
+sum of all freq is 96940
+ratio is 0.00011347225087683103
+i is 17
+local frq is 13
+sum of all freq is 96940
+ratio is 0.00013410356921807304
+i is 18
+local frq is 11
+sum of all freq is 96940
+ratio is 0.00011347225087683103
+i is 19
+local frq is 8
+sum of all freq is 96940
+ratio is 8.252527336496802e-05
+i is 20
+local frq is 5
+sum of all freq is 96940
+ratio is 5.1578295853105015e-05
+i is 21
+local frq is 9
+sum of all freq is 96940
+ratio is 9.284093253558903e-05
+i is 22
+local frq is 13
+sum of all freq is 96940
+ratio is 0.00013410356921807304
+i is 23
+local frq is 5
+sum of all freq is 96940
+ratio is 5.1578295853105015e-05
+i is 24
+local frq is 11
+sum of all freq is 96940
+ratio is 0.00011347225087683103
+i is 25
+local frq is 10
+sum of all freq is 96940
+ratio is 0.00010315659170621003
+i is 26
+local frq is 10
+sum of all freq is 96940
+ratio is 0.00010315659170621003
+i is 27
+local frq is 5
+sum of all freq is 96940
+ratio is 5.1578295853105015e-05
+i is 28
+local frq is 11
+sum of all freq is 96940
+ratio is 0.00011347225087683103
+i is 29
+local frq is 18
+sum of all freq is 96940
+ratio is 0.00018568186507117806
+i is 30
+local frq is 16
+sum of all freq is 96940
+ratio is 0.00016505054672993604
+i is 31
+local frq is 17
+sum of all freq is 96940
+ratio is 0.00017536620590055704
+i is 32
+local frq is 19
+sum of all freq is 96940
+ratio is 0.00019599752424179906
+i is 33
+local frq is 13
+sum of all freq is 96940
+ratio is 0.00013410356921807304
+i is 34
+local frq is 28
+sum of all freq is 96940
+ratio is 0.0002888384567773881
+i is 35
+local frq is 32
+sum of all freq is 96940
+ratio is 0.0003301010934598721
+i is 36
+local frq is 48
+sum of all freq is 96940
+ratio is 0.0004951516401898082
+i is 37
+local frq is 74
+sum of all freq is 96940
+ratio is 0.0007633587786259542
+i is 38
+local frq is 108
+sum of all freq is 96940
+ratio is 0.0011140911904270682
+i is 39
+local frq is 159
+sum of all freq is 96940
+ratio is 0.0016401898081287395
+i is 40
+local frq is 255
+sum of all freq is 96940
+ratio is 0.002630493088508356
+i is 41
+local frq is 370
+sum of all freq is 96940
+ratio is 0.003816793893129771
+i is 42
+local frq is 606
+sum of all freq is 96940
+ratio is 0.0062512894573963276
+i is 43
+local frq is 998
+sum of all freq is 96940
+ratio is 0.01029502785227976
+i is 44
+local frq is 1679
+sum of all freq is 96940
+ratio is 0.017319991747472663
+i is 45
+local frq is 2952
+sum of all freq is 96940
+ratio is 0.0304518258716732
+i is 46
+local frq is 4898
+sum of all freq is 96940
+ratio is 0.05052609861770167
+i is 47
+local frq is 7767
+sum of all freq is 96940
+ratio is 0.08012172477821333
+i is 48
+local frq is 9868
+sum of all freq is 96940
+ratio is 0.10179492469568806
+i is 49
+local frq is 8028
+sum of all freq is 96940
+ratio is 0.0828141118217454
+prob is  [4.80245513e-01 7.96884671e-02 2.31792862e-02 9.86177017e-03
+ 5.03404168e-03 2.99154116e-03 2.09407881e-03 1.28945740e-03
+ 9.59356303e-04 6.08623891e-04 3.50732412e-04 1.95997524e-04
+ 2.06313183e-04 2.47575820e-04 1.13472251e-04 1.65050547e-04
+ 1.13472251e-04 1.34103569e-04 1.13472251e-04 8.25252734e-05
+ 5.15782959e-05 9.28409325e-05 1.34103569e-04 5.15782959e-05
+ 1.13472251e-04 1.03156592e-04 1.03156592e-04 5.15782959e-05
+ 1.13472251e-04 1.85681865e-04 1.65050547e-04 1.75366206e-04
+ 1.95997524e-04 1.34103569e-04 2.88838457e-04 3.30101093e-04
+ 4.95151640e-04 7.63358779e-04 1.11409119e-03 1.64018981e-03
+ 2.63049309e-03 3.81679389e-03 6.25128946e-03 1.02950279e-02
+ 1.73199917e-02 3.04518259e-02 5.05260986e-02 8.01217248e-02
+ 1.01794925e-01 8.28141118e-02] 
+cum prob is  [0.48024551 0.55993398 0.58311327 0.59297504 0.59800908 0.60100062
+ 0.6030947  0.60438416 0.60534351 0.60595214 0.60630287 0.60649887
+ 0.60670518 0.60695275 0.60706623 0.60723128 0.60734475 0.60747885
+ 0.60759233 0.60767485 0.60772643 0.60781927 0.60795337 0.60800495
+ 0.60811842 0.60822158 0.60832474 0.60837632 0.60848979 0.60867547
+ 0.60884052 0.60901589 0.60921188 0.60934599 0.60963483 0.60996493
+ 0.61046008 0.61122344 0.61233753 0.61397772 0.61660821 0.62042501
+ 0.62667629 0.63697132 0.65429131 0.68474314 0.73526924 0.81539096
+ 0.91718589 1.        ] 
+frac cluster size is [0.02 0.04 0.06 0.08 0.1  0.12 0.14 0.16 0.18 0.2  0.22 0.24 0.26 0.28
+ 0.3  0.32 0.34 0.36 0.38 0.4  0.42 0.44 0.46 0.48 0.5  0.52 0.54 0.56
+ 0.58 0.6  0.62 0.64 0.66 0.68 0.7  0.72 0.74 0.76 0.78 0.8  0.82 0.84
+ 0.86 0.88 0.9  0.92 0.94 0.96 0.98 1.  ]
+The sum of all freq for one frame is 2.337464477423429
+[31922 11356  6841  5310  5050  5102  5974  7543  9735]
+prob is  [0.35934844 0.12783538 0.07700967 0.05977508 0.05684824 0.05743361
+ 0.06724978 0.08491214 0.10958765] 
+cum prob is  [0.35934844 0.48718382 0.56419349 0.62396857 0.68081681 0.73825042
+ 0.80550021 0.89041235 1.        ] 
+frac cluster size is [0.11111111 0.22222222 0.33333333 0.44444444 0.55555556 0.66666667
+ 0.77777778 0.88888889 1.        ]
+373.0 MD
+The combined trajectory has 38004 frames = 38004 ps 
+r_max is 0.77966 nm
+check index [ 11  22  26  37  41  52  56  67  71  82  86  97 101 112 116 127 131 142]
+The first shell minima of Li-O(TFSI) lies at 2.9477420449256897 \AA
+The first shell minima of Li-O(water) lies at 2.8964313864707947 \AA
+[3, 1, 2, 6, 4, 0, 5, 7, 8, 9]
+[4, 3, 5, 2, 6, 1, 7, 0]
+[0, 1, 2, 3, 4, 5, 6]
+The sum of all freq for one frame is 3.7287917061361964
+[71644 17025  6253  2902  1557   995   694   519   361   320   211   208
+   157   128   125   118    88    76    89    80    92    92    75    66
+    93    97    93   112   103   117   141   185   179   234   261   328
+   377   499   650   914  1131  1557  2060  2664  3548  4491  5291  5530
+  4691  2488]
+i is 0
+local frq is 71644
+sum of all freq is 141709
+ratio is 0.5055712763480089
+i is 1
+local frq is 17025
+sum of all freq is 141709
+ratio is 0.12014056975915433
+i is 2
+local frq is 6253
+sum of all freq is 141709
+ratio is 0.04412563775060158
+i is 3
+local frq is 2902
+sum of all freq is 141709
+ratio is 0.02047858639888786
+i is 4
+local frq is 1557
+sum of all freq is 141709
+ratio is 0.010987304970044246
+i is 5
+local frq is 995
+sum of all freq is 141709
+ratio is 0.007021431242899181
+i is 6
+local frq is 694
+sum of all freq is 141709
+ratio is 0.004897360082986966
+i is 7
+local frq is 519
+sum of all freq is 141709/raid6/homes/linx6/.conda/envs/myenv/lib/python3.7/site-packages/progressbar/bar.py:50: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3,and in 3.9 it will stop working
+  class ProgressBarBase(collections.Iterable, ProgressBarMixinBase):
+/raid6/homes/linx6/install_software/mbuild/mbuild/formats/xyz.py:71: UserWarning: No matching element found for TF2; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/raid6/homes/linx6/install_software/mbuild/mbuild/formats/xyz.py:71: UserWarning: No matching element found for wat; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/raid6/homes/linx6/install_software/mbuild/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<TF2 pos=([-0.728   0.4006 -0.6208]), 0 bonds, id: 47739783915152>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/raid6/homes/linx6/install_software/mbuild/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<wat pos=([-0.2748  0.5992  0.2736]), 0 bonds, id: 47739783873040>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/raid6/homes/linx6/install_software/mbuild/mbuild/formats/xyz.py:71: UserWarning: No matching element found for TF2; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/raid6/homes/linx6/install_software/mbuild/mbuild/formats/xyz.py:71: UserWarning: No matching element found for wat; the particle will be added to the compound without an element attribute.
+  "attribute.".format(name)
+/raid6/homes/linx6/install_software/mbuild/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<TF2 pos=([-0.0492  0.0434 -0.2969]), 0 bonds, id: 47740329067600>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+/raid6/homes/linx6/install_software/mbuild/mbuild/conversion.py:1647: UserWarning: No element attribute associated with '<wat pos=([ 0.3957 -0.0292  0.4722]), 0 bonds, id: 47739919070736>'; and no matching elements found based upon the compound name. Setting atomic number to zero.
+  warn(warn_msg)
+
+ratio is 0.0036624349900147486
+i is 8
+local frq is 361
+sum of all freq is 141709
+ratio is 0.0025474740489312606
+i is 9
+local frq is 320
+sum of all freq is 141709
+ratio is 0.0022581487414349124
+i is 10
+local frq is 211
+sum of all freq is 141709
+ratio is 0.0014889668263836453
+i is 11
+local frq is 208
+sum of all freq is 141709
+ratio is 0.001467796681932693
+i is 12
+local frq is 157
+sum of all freq is 141709
+ratio is 0.0011079042262665038
+i is 13
+local frq is 128
+sum of all freq is 141709
+ratio is 0.000903259496573965
+i is 14
+local frq is 125
+sum of all freq is 141709
+ratio is 0.0008820893521230127
+i is 15
+local frq is 118
+sum of all freq is 141709
+ratio is 0.0008326923484041239
+i is 16
+local frq is 88
+sum of all freq is 141709
+ratio is 0.000620990903894601
+i is 17
+local frq is 76
+sum of all freq is 141709
+ratio is 0.0005363103260907917
+i is 18
+local frq is 89
+sum of all freq is 141709
+ratio is 0.000628047618711585
+i is 19
+local frq is 80
+sum of all freq is 141709
+ratio is 0.0005645371853587281
+i is 20
+local frq is 92
+sum of all freq is 141709
+ratio is 0.0006492177631625373
+i is 21
+local frq is 92
+sum of all freq is 141709
+ratio is 0.0006492177631625373
+i is 22
+local frq is 75
+sum of all freq is 141709
+ratio is 0.0005292536112738075
+i is 23
+local frq is 66
+sum of all freq is 141709
+ratio is 0.00046574317792095067
+i is 24
+local frq is 93
+sum of all freq is 141709
+ratio is 0.0006562744779795214
+i is 25
+local frq is 97
+sum of all freq is 141709
+ratio is 0.0006845013372474578
+i is 26
+local frq is 93
+sum of all freq is 141709
+ratio is 0.0006562744779795214
+i is 27
+local frq is 112
+sum of all freq is 141709
+ratio is 0.0007903520595022194
+i is 28
+local frq is 103
+sum of all freq is 141709
+ratio is 0.0007268416261493624
+i is 29
+local frq is 117
+sum of all freq is 141709
+ratio is 0.0008256356335871398
+i is 30
+local frq is 141
+sum of all freq is 141709
+ratio is 0.0009949967891947583
+i is 31
+local frq is 185
+sum of all freq is 141709
+ratio is 0.0013054922411420587
+i is 32
+local frq is 179
+sum of all freq is 141709
+ratio is 0.001263151952240154
+i is 33
+local frq is 234
+sum of all freq is 141709
+ratio is 0.0016512712671742796
+i is 34
+local frq is 261
+sum of all freq is 141709
+ratio is 0.0018418025672328503
+i is 35
+local frq is 328
+sum of all freq is 141709
+ratio is 0.0023146024599707852
+i is 36
+local frq is 377
+sum of all freq is 141709
+ratio is 0.0026603814860030064
+i is 37
+local frq is 499
+sum of all freq is 141709
+ratio is 0.0035213006936750664
+i is 38
+local frq is 650
+sum of all freq is 141709
+ratio is 0.004586864631039666
+i is 39
+local frq is 914
+sum of all freq is 141709
+ratio is 0.0064498373427234685
+i is 40
+local frq is 1131
+sum of all freq is 141709
+ratio is 0.007981144458009019
+i is 41
+local frq is 1557
+sum of all freq is 141709
+ratio is 0.010987304970044246
+i is 42
+local frq is 2060
+sum of all freq is 141709
+ratio is 0.014536832522987249
+i is 43
+local frq is 2664
+sum of all freq is 141709
+ratio is 0.018799088272445644
+i is 44
+local frq is 3548
+sum of all freq is 141709
+ratio is 0.02503722417065959
+i is 45
+local frq is 4491
+sum of all freq is 141709
+ratio is 0.0316917062430756
+i is 46
+local frq is 5291
+sum of all freq is 141709
+ratio is 0.03733707809666288
+i is 47
+local frq is 5530
+sum of all freq is 141709
+ratio is 0.03902363293792208
+i is 48
+local frq is 4691
+sum of all freq is 141709
+ratio is 0.03310304920647242
+i is 49
+local frq is 2488
+sum of all freq is 141709
+ratio is 0.017557106464656445
+prob is  [5.05571276e-01 1.20140570e-01 4.41256378e-02 2.04785864e-02
+ 1.09873050e-02 7.02143124e-03 4.89736008e-03 3.66243499e-03
+ 2.54747405e-03 2.25814874e-03 1.48896683e-03 1.46779668e-03
+ 1.10790423e-03 9.03259497e-04 8.82089352e-04 8.32692348e-04
+ 6.20990904e-04 5.36310326e-04 6.28047619e-04 5.64537185e-04
+ 6.49217763e-04 6.49217763e-04 5.29253611e-04 4.65743178e-04
+ 6.56274478e-04 6.84501337e-04 6.56274478e-04 7.90352060e-04
+ 7.26841626e-04 8.25635634e-04 9.94996789e-04 1.30549224e-03
+ 1.26315195e-03 1.65127127e-03 1.84180257e-03 2.31460246e-03
+ 2.66038149e-03 3.52130069e-03 4.58686463e-03 6.44983734e-03
+ 7.98114446e-03 1.09873050e-02 1.45368325e-02 1.87990883e-02
+ 2.50372242e-02 3.16917062e-02 3.73370781e-02 3.90236329e-02
+ 3.31030492e-02 1.75571065e-02] 
+cum prob is  [0.50557128 0.62571185 0.66983748 0.69031607 0.70130338 0.70832481
+ 0.71322217 0.7168846  0.71943208 0.72169022 0.72317919 0.72464699
+ 0.72575489 0.72665815 0.72754024 0.72837293 0.72899392 0.72953023
+ 0.73015828 0.73072282 0.73137204 0.73202125 0.73255051 0.73301625
+ 0.73367253 0.73435703 0.7350133  0.73580365 0.7365305  0.73735613
+ 0.73835113 0.73965662 0.74091977 0.74257104 0.74441285 0.74672745
+ 0.74938783 0.75290913 0.757496   0.76394583 0.77192698 0.78291428
+ 0.79745111 0.8162502  0.84128743 0.87297913 0.91031621 0.94933984
+ 0.98244289 1.        ] 
+frac cluster size is [0.02 0.04 0.06 0.08 0.1  0.12 0.14 0.16 0.18 0.2  0.22 0.24 0.26 0.28
+ 0.3  0.32 0.34 0.36 0.38 0.4  0.42 0.44 0.46 0.48 0.5  0.52 0.54 0.56
+ 0.58 0.6  0.62 0.64 0.66 0.68 0.7  0.72 0.74 0.76 0.78 0.8  0.82 0.84
+ 0.86 0.88 0.9  0.92 0.94 0.96 0.98 1.  ]
+The sum of all freq for one frame is 3.5255499421113567
+[65858 22134 12790  9056  7112  5757  5170  3948  2160]
+prob is  [0.49153263 0.1651976  0.09545845 0.06758966 0.05308057 0.0429675
+ 0.03858641 0.02946598 0.01612121] 
+cum prob is  [0.49153263 0.65673023 0.75218868 0.81977833 0.8728589  0.9158264
+ 0.95441281 0.98387879 1.        ] 
+frac cluster size is [0.11111111 0.22222222 0.33333333 0.44444444 0.55555556 0.66666667
+ 0.77777778 0.88888889 1.        ]
+Thu Jan 20 10:43:46 EST 2022
