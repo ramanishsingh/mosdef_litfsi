@@ -1,0 +1,34 @@
+constraints         = h-bonds
+constraint-algorithm = LINCS
+lincs_iter          = 1
+lincs_order         = 4
+integrator          = md
+nsteps              = 1000000
+dt                  = 0.001
+
+nstxout             = 10000
+nstvout             = 0
+nstenergy           = 1000
+nstlog              = 1000
+
+cutoff-scheme       = Verlet
+ns_type             = grid
+nstlist             = 10
+rcoulomb            = 1.0
+rvdw                = 1.0
+
+coulombtype         = PME
+pme_order           =
+fourierspacing      = 0.16
+
+gen_vel             = no
+
+#tcoupl              = berendsen
+tcoupl              = v-rescale
+tc-grps             = System
+tau_t               = 0.5
+ref_t               = 260
+pcoupl              = no
+
+;for water setting
+;define          = -DFLEXIBLE

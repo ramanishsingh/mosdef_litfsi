@@ -1,0 +1,146 @@
+Warning: importing 'simtk.openmm' is deprecated.  Import 'openmm' instead.
+                       :-) GROMACS - gmx grompp, 2020 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov      Paul Bauer     Herman J.C. Berendsen
+    Par Bjelkmar      Christian Blau   Viacheslav Bolnykh     Kevin Boyd    
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra       Alan Gray     
+  Gerrit Groenhof     Anca Hamuraru    Vincent Hindriksen  M. Eric Irrgang  
+  Aleksei Iupinov   Christoph Junghans     Joe Jordan     Dimitrios Karkoulis
+    Peter Kasson        Jiri Kraus      Carsten Kutzner      Per Larsson    
+  Justin A. Lemkul    Viveca Lindahl    Magnus Lundborg     Erik Marklund   
+    Pascal Merz     Pieter Meulenhoff    Teemu Murtola       Szilard Pall   
+    Sander Pronk      Roland Schulz      Michael Shirts    Alexey Shvetsov  
+   Alfons Sijbers     Peter Tieleman      Jon Vincent      Teemu Virolainen 
+ Christian Wennberg    Maarten Wolf      Artem Zhmurov   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2019, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx grompp, version 2020
+Executable:   /raid6/software/gromacs_2020//bin/gmx
+Data prefix:  /raid6/software/gromacs_2020/
+Working dir:  /raid6/homes/linx6/project/ilja_project/mosdef_litfsi/simulations/nvt-md/small-10m/gromacs/workspace/cdbe361ffd362bf791cb8b979036210d
+Command line:
+  gmx grompp -f /raid6/homes/linx6/project/ilja_project/mosdef_litfsi/simulations/nvt-md/small-10m/gromacs/util/mdp_files/nvt-298.mdp -c system.gro -p system.top -o nvt.tpr --maxwarn 1
+
+Ignoring obsolete mdp entry 'ns_type'
+
+NOTE 1 [file /raid6/homes/linx6/project/ilja_project/mosdef_litfsi/simulations/nvt-md/small-10m/gromacs/util/mdp_files/nvt-298.mdp]:
+  You have set rlist larger than the interaction cut-off, but you also have
+  verlet-buffer-tolerance > 0. Will set rlist using verlet-buffer-tolerance.
+
+
+NOTE 2 [file /raid6/homes/linx6/project/ilja_project/mosdef_litfsi/simulations/nvt-md/small-10m/gromacs/util/mdp_files/nvt-298.mdp]:
+  leapfrog does not yet support Nose-Hoover chains, nhchainlength reset to 1
+
+Setting the LD random seed to 487929357
+Generated 36 of the 36 non-bonded parameter combinations
+Excluding 3 bonded neighbours molecule type 'system'
+
+NOTE 3 [file system.top, line 1353]:
+  In moleculetype 'system' 9 atoms are not bound by a potential or
+  constraint to any other atom in the same moleculetype. Although
+  technically this might not cause issues in a simulation, this often means
+  that the user forgot to add a bond/potential/constraint or put multiple
+  molecules in the same moleculetype definition by mistake. Run with -v to
+  get information for each atom.
+
+Number of degrees of freedom in T-Coupling group System is 779.00
+Estimate for the relative computational load of the PME mesh part: 0.13
+
+There were 3 notes
+
+Back Off! I just backed up nvt.tpr to ./#nvt.tpr.2#
+
+GROMACS reminds you: "Here, kitty, kitty..." (Erwin Schroedinger)
+
+turning H bonds into constraints...
+Analysing residue names:
+There are:     9        Ion residues
+There are:     9      Other residues
+There are:    50      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+Determining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 298 K
+Calculated rlist for 1x1 atom pair-list as 0.706 nm, buffer size 0.006 nm
+Set rlist, assuming 4x4 atom pair-list, to 0.700 nm, buffer size 0.000 nm
+Note that mdrun will redetermine rlist based on the actual pair-list setup
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 10x10x10, spacing 0.154 0.154 0.154
+This run will generate roughly 41 Mb of data
+                       :-) GROMACS - gmx mdrun, 2020 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov      Paul Bauer     Herman J.C. Berendsen
+    Par Bjelkmar      Christian Blau   Viacheslav Bolnykh     Kevin Boyd    
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra       Alan Gray     
+  Gerrit Groenhof     Anca Hamuraru    Vincent Hindriksen  M. Eric Irrgang  
+  Aleksei Iupinov   Christoph Junghans     Joe Jordan     Dimitrios Karkoulis
+    Peter Kasson        Jiri Kraus      Carsten Kutzner      Per Larsson    
+  Justin A. Lemkul    Viveca Lindahl    Magnus Lundborg     Erik Marklund   
+    Pascal Merz     Pieter Meulenhoff    Teemu Murtola       Szilard Pall   
+    Sander Pronk      Roland Schulz      Michael Shirts    Alexey Shvetsov  
+   Alfons Sijbers     Peter Tieleman      Jon Vincent      Teemu Virolainen 
+ Christian Wennberg    Maarten Wolf      Artem Zhmurov   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2019, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, version 2020
+Executable:   /raid6/software/gromacs_2020//bin/gmx
+Data prefix:  /raid6/software/gromacs_2020/
+Working dir:  /raid6/homes/linx6/project/ilja_project/mosdef_litfsi/simulations/nvt-md/small-10m/gromacs/workspace/cdbe361ffd362bf791cb8b979036210d
+Command line:
+  gmx mdrun -deffnm nvt -ntmpi 1
+
+
+Back Off! I just backed up nvt.log to ./#nvt.log.2#
+Compiled SIMD: None, but for this host/run AVX2_256 might be better (see log).
+The current CPU can measure timings more accurately than the code in
+gmx mdrun was configured to use. This might affect your simulation
+speed as accurate timings are needed for load-balancing.
+Please consider rebuilding gmx mdrun with the GMX_USE_RDTSCP=ON CMake option.
+Reading file nvt.tpr, VERSION 2020 (single precision)
+Changing nstlist from 10 to 50, rlist from 0.7 to 0.731
+
+
+1 GPU selected for this run.
+Mapping of GPU IDs to the 2 GPU tasks in the 1 rank on this node:
+  PP:0,PME:0
+PP tasks will do (non-perturbed) short-ranged interactions on the GPU
+PME tasks will do all aspects on the GPU
+Using 1 MPI thread
+
+Non-default thread affinity set, disabling internal thread affinity
+
+Using 16 OpenMP threads 
+
+
+Back Off! I just backed up nvt.xtc to ./#nvt.xtc.2#
+
+Back Off! I just backed up nvt.trr to ./#nvt.trr.2#
+
+Back Off! I just backed up nvt.edr to ./#nvt.edr.2#
+starting mdrun 'Generic title'
+10000000 steps,  10000.0 ps.
