@@ -25,6 +25,7 @@ def unique(list1):
 
 def main():
     # All output data will be stored in rdf_data folder
+    save_string_file = "" # This string will be saved to a file 
     data_path = "rdf_data"
     if os.path.exists(data_path):
         shutil.rmtree(data_path)
@@ -61,6 +62,7 @@ def main():
                 unitcell_angles = np.tile([90.,90.,90.], (comb_traj.n_frames,1)),
             )
         print("The combined trajectory has {} frames = {} ps ".format(comb_traj.n_frames,comb_traj.n_frames*5/1000))
+        save_string_file += "\n"+"The combined trajectory has {} frames = {} ps ".format(comb_traj.n_frames,comb_traj.n_frames*5/1000)+"\n"
         box = freud.box.Box(Lx=length[0]/10,Ly= length[1]/10, Lz=length[2]/10)
         num_residues=comb_traj.n_residues
 
@@ -237,7 +239,12 @@ def main():
         r, gr, cdf = freud_rdf.bin_centers, freud_rdf.rdf, freud_rdf.n_r
         plt.figure()
         plt.plot(r*10,gr)
+        Li_O_TFSI_minima=minima_in_range(r*10, gr, 2,4)[0]
+        #make a vertical line at the minima in the plot
+        plt.axvline(x=Li_O_TFSI_minima, color='orange', label='Minima at {}'.format(round(Li_O_TFSI_minima,2)), ls='--')
+        plt.legend()
         plt.grid(alpha=0.2)
+        plt.legend()
         plt.xlabel(r"$r$/$\mathrm{\AA}$")
         plt.ylabel("$g(r)$")
         plt.savefig("Li-O(TFSI).png")
@@ -246,9 +253,8 @@ def main():
             np.transpose(np.vstack([r*10, gr,r*10,cdf])),
             header="distance (\AA)\tRDF\tdistance (\AA)\tcdf",
         )
-        Li_O_TFSI_minima=minima_in_range(r*10, gr, 2,4)[0]
         print("The first shell minima of Li-O(TFSI) lies at {} \AA".format(Li_O_TFSI_minima))
-        #make a vertical line at the minima in the plot
+        save_string_file += "\n"+ "The first shell minima of Li-O(TFSI) lies at {} \AA".format(Li_O_TFSI_minima) +"\n"
 
         plt.close()
         plt.figure()
@@ -270,6 +276,9 @@ def main():
         r, gr, cdf = freud_rdf.bin_centers, freud_rdf.rdf, freud_rdf.n_r
         plt.figure()
         plt.plot(r*10,gr)
+        Li_O_water_minima=minima_in_range(r*10, gr, 2,4)[0]
+        plt.axvline(x=Li_O_water_minima, color='orange', label='Minima at {}'.format(round(Li_O_water_minima,2)), ls='--')
+
         plt.grid(alpha=0.2)
         plt.xlabel(r"$r$/$\mathrm{\AA}$")
         plt.ylabel("$g(r)$")
@@ -279,8 +288,8 @@ def main():
             np.transpose(np.vstack([r*10, gr,r*10,cdf])),
             header="distance (\AA)\tRDF\tdistance (\AA)\tcdf",
         )
-        Li_O_water_minima=minima_in_range(r*10, gr, 2,4)[0]
         print("The first shell minima of Li-O(water) lies at {} \AA".format(Li_O_water_minima))
+        save_string_file += "\n"+"The first shell minima of Li-O(water) lies at {} \AA".format(Li_O_water_minima) +"\n"
         plt.close()
         plt.figure()
         plt.plot(r*10,cdf)
@@ -533,5 +542,10 @@ def main():
 
 
         os.chdir("..")    
+
+        text_file = open("analysis_info_{}_{}.txt".format(temp, functional), "w")
+        n = text_file.write(save_string_file)
+        text_file.close()
+
 if __name__ == "__main__":
     main()
