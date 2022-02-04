@@ -58,7 +58,7 @@ def main():
                 time[i]=0+i*1
             msdA2=1e2*msd_f.msd
             timestep= 1 ## 1 ps per frame
-            start=200
+            start=500
             start_index=int(start/timestep)
             end=3000
             end_index=int(end/timestep)
