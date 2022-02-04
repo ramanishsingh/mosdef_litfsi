@@ -11,7 +11,7 @@ import os
 import mdtraj as md
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use("pdf")
+# matplotlib.use("jpg")
 def tolerant_mean(arrs):
     lens = [len(i) for i in arrs]
     arr = np.ma.empty((np.max(lens),len(arrs)))
@@ -22,7 +22,7 @@ def tolerant_mean(arrs):
 
 
 def main():
-    data_path = "msd_data"
+    data_path = "msd_data_2"
     if os.path.exists(data_path):
         shutil.rmtree(data_path)
     os.makedirs(data_path)
@@ -42,25 +42,25 @@ def main():
         for job in group:
             seed=job.sp.Seed
             length=job.sp.L
-            trj_file = os.path.join(job.workspace(), "sample.xtc")
+            trj_file = os.path.join(job.workspace(), "sample_unwrapped.xtc")
             one_traj = md.load(trj_file, top = top)
-            freq = 1 # 1 ps for one frame
-            print("traj {} has {}ps prod".format(job, one_traj.n_frames))
-            if one_traj.n_frames>500:
-                traj_list.append(one_traj[500:])
-                one_traj=one_traj[500:]
+            print("traj {} has {}ps prod".format(job, (one_traj.n_frames)))
+            discard_frame = 500 ## discard first 500 ps
+            if one_traj.n_frames>discard_frame:
+                traj_list.append(one_traj[discard_frame:])
+                one_traj=one_traj[discard_frame:]
             Li_indices=one_traj.top.select("element Li")
             Li_xyz=one_traj.xyz[:, Li_indices, :]
             msd_f= freud.msd.MSD()
             msd_f.compute(Li_xyz,reset=True)
             time=msd_f.msd
             for i in range(time.shape[0]):
-                time[i]=0+i*freq
+                time[i]=0+i*1
             msdA2=1e2*msd_f.msd
-            timestep=freq
-            start=2
+            timestep= 1 ## 1 ps per frame
+            start=200
             start_index=int(start/timestep)
-            end=30
+            end=3000
             end_index=int(end/timestep)
             msd_fit=msdA2[start_index:end_index]
             time_fit= time[start_index:end_index]
@@ -90,7 +90,7 @@ def main():
                 header="time (ps)\tmsd (pm2)",
                 )
             fig.savefig(
-                "msd_{}.pdf".format(
+                "msd_{}.jpg".format(
                     job
                 )
                 )
@@ -110,7 +110,7 @@ def main():
             average_msdA2, error = tolerant_mean(msd_boot)
             time=np.copy(average_msdA2)
             for i in range(time.shape[0]):
-                time[i]=0+i*freq
+                time[i]=0+i*1
             fig, ax = plt.subplots()
 
             plt.loglog(time, average_msdA2)
@@ -143,12 +143,12 @@ def main():
                 header="time (ps)\tmsd (A2)",
                 )
             fig.savefig(
-                "msd_boot_{}.pdf".format(
+                "msd_boot_{}.jpg".format(
                     boot
                 )
                 )
             fig2.savefig(
-                "msd_log_fit_boot_{}.pdf".format(
+                "msd_log_fit_boot_{}.jpg".format(
                     boot
                 )
                 )
