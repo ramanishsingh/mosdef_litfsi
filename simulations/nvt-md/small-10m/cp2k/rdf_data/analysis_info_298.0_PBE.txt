@@ -1,6 +1,0 @@
-
-The combined trajectory has 101804 frames = 509.02 ps 
-
-The first shell minima of Li-O(TFSI) lies at 2.823910117149353 \AA
-
-The first shell minima of Li-O(water) lies at 2.7739298343658447 \AA

@@ -1,6 +1,6 @@
 import numpy as np
 
-processes = ['nvt', 'sample']
+processes = ['nvt', 'sample', 'sample_30ns']
 
 temperatures = ['298','373']
 

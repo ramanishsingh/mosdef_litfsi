@@ -1,7 +1,7 @@
 constraints         = h-bonds
 constraint_algorithm = lincs
 integrator          = md
-nsteps              = 10000000
+nsteps              = 40000000
 dt                  = 0.001
 
 nstxout             = 10000

@@ -5,16 +5,15 @@ import shutil
 import os
 from get_sol_il_xml import GetSolv, GetIL, Get_ff_path
 import signac
-import environment_for_rahman
 from mtools.gromacs.gromacs import make_comtrj
 import mdtraj as md
 import numpy as np
 from mtools.post_process import calc_msd
+import os
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-has_md_files = "system.gro"
-nvt_file = "nvt.gro"
+init_files = "init.gro"
 sample_file = "sample.gro"
 unwrapped_file = 'sample_unwrapped.xtc'
 
@@ -22,9 +21,6 @@ class Project(FlowProject):
     pass
 
 
-@Project.label
-def has_setter(job):
-    return job.isfile("setter.py")
 
 
 @Project.label
@@ -33,35 +29,6 @@ def has_structure(job):
 
 
 
-@Project.label
-def has_restart_file(job):
-    "Verify that the restart file required for restarting the MD simulation is there"
-
-    try:
-        return job.isfile(job.doc.restart_filename)
-    except:
-        return False
-
-
-
-@Project.label
-def md_completed(job):
-    "Verify that the md simulation has completed"
-
-    try:
-        return job.isfile(job.doc.output_filename)
-    except:
-        return False
-
-
-@Project.operation
-@Project.post(has_setter)
-def copy_setter(job):
-    with job:
-        print(os.listdir())
-        shutil.copyfile(
-            Project().root_directory() + "/setter.py", job.workspace() + "/setter.py"
-        )
 
 @Project.operation
 @Project.post(has_structure)
@@ -75,11 +42,11 @@ def copy_structure(job):
 
 @Project.label
 def initialized(job):
-    return job.isfile(has_md_files)
+    return job.isfile(init_files)
 
 
 @Project.operation
-@Project.post.isfile(has_md_files)
+@Project.post.isfile(init_files)
 def initialize(job):
 
     import os
@@ -191,61 +158,45 @@ def initialize(job):
             structure.box[1] = box_size[1] * 10
             structure.box[2] = box_size[2] * 10
     
-    structure.save(os.path.join(job.workspace(), "system.gro"), combine ="all", overwrite=True)
-    structure.save(os.path.join(job.workspace(), "system.top"), combine ="all", overwrite=True)
+    structure.save(os.path.join(job.workspace(), "init.gro"), combine ="all", overwrite=True)
+    structure.save(os.path.join(job.workspace(), "init.top"), combine ="all", overwrite=True)
     
 
-
-@Project.label
-def nvt_done(job):
-    return job.isfile(nvt_file)
-
-@Project.operation
-@Project.pre.isfile(has_md_files)
-@Project.post.isfile(nvt_file)
-@flow.cmd
-def nvt(job):
-    return _gromacs_str("nvt", "init", "init", job)
+#run the simulation
 
 @Project.label
 def sampled(job):
     return job.isfile(sample_file)
 
-@Project.operation
-@Project.pre.isfile(nvt_file)
-@Project.post.isfile(sample_file)
-@flow.cmd
-def sample(job):
-    return _gromacs_str("sample", "nvt", "init", job)
-
 
 @Project.operation
-@Project.pre.isfile(has_md_files)
+@Project.pre.isfile(init_files)
 @Project.post.isfile(sample_file)
 @flow.cmd
 def sample_total(job):
+    #os.system(_gromacs_str_total('nvt','sample', job.statepoint()["T"], job))
     return _gromacs_str_total('nvt','sample', job.statepoint()["T"], job)
 
 
 @Project.label
-def prepared(job):
+def unwrap_done(job):
     return job.isfile(unwrapped_file)
 
 @Project.operation
 @Project.pre.isfile(sample_file)
 @Project.post.isfile(unwrapped_file)
-def prepare(job):
+def unwrap_traj(job):
     xtc_file = os.path.join(job.workspace(), 'sample.xtc')
     gro_file = os.path.join(job.workspace(), 'sample.gro')
     tpr_file = os.path.join(job.workspace(), 'sample.tpr')
     if os.path.isfile(xtc_file) and os.path.isfile(gro_file):
         unwrapped_trj = os.path.join(job.workspace(),
         'sample_unwrapped.xtc')
-        os.system('echo 0 | gmx trjconv -f {0} -o {1} -s {2} -pbc nojump'.format(xtc_file, unwrapped_trj, tpr_file))
+        os.system('echo 0 | gmx_mpi trjconv -f {0} -o {1} -s {2} -pbc nojump'.format(xtc_file, unwrapped_trj, tpr_file))
         res_trj = os.path.join(job.ws, 'sample_res.xtc')
         com_trj = os.path.join(job.ws, 'sample_com.xtc')
         unwrapped_com_trj = os.path.join(job.ws,'sample_com_unwrapped.xtc')
-        os.system('echo 0 | gmx trjconv -f {0} -o {1} -s {2} -pbc res'.format(
+        os.system('echo 0 | gmx_mpi trjconv -f {0} -o {1} -s {2} -pbc res'.format(
                 xtc_file, res_trj, tpr_file))
         trj = md.load(res_trj, top=gro_file)
         comtrj = make_comtrj(trj)
@@ -253,56 +204,9 @@ def prepare(job):
         comtrj[-1].save_gro(os.path.join(job.workspace(),
              'com.gro'))
         print('made comtrj ...')
-        os.system('gmx trjconv -f {0} -o {1} -pbc nojump'.format(
+        os.system('gmx_mpi trjconv -f {0} -o {1} -pbc nojump'.format(
                 com_trj, unwrapped_com_trj))
 
-@Project.label
-def msd_done(job):
-    return job.isfile(msd_file)
-
-msd_file = 'diffusivity_and_msd_done.txt_1'
-@Project.operation
-@Project.pre.isfile(unwrapped_file)
-@Project.post.isfile(msd_file)
-def run_msd(job):
-    import matplotlib.pyplot as plt
-    print('Loading trj {}'.format(job))
-    top_file = os.path.join(job.workspace(), 'com.gro')
-    trj_file = os.path.join(job.workspace(),
-            'sample_com_unwrapped.xtc')
-    trj = md.load(trj_file, top=top_file)
-
-
-    selections = {'all' : trj.top.select('all'),
-                'ion' : trj.top.select('resname li tfsi'),
-                'cation': trj.top.select("resname li"),
-                'anion': trj.top.select("resname tfsi"),
-                'solvent': trj.top.select("resname wat"),
-                }
-
-    for mol, indices in selections.items():
-        print('\tConsidering {}'.format(mol))
-        if indices.size == 0:
-            print('{} does not exist in this statepoint'.format(mol))
-            continue
-        print(mol)
-        sliced = trj.atom_slice(indices)
-        D, MSD = _run_overall(sliced, mol)
-        job.document['D_' + mol + '_overall_original'] = D
-        
-        np.savetxt('msd_data/msd_{}K_{}.txt'.format(job.statepoint()["T"], job.statepoint()["Seed"]),np.transpose(np.vstack([trj.time, MSD])),header='# Time (ps)\tMSD (nm^2)')
-        fig, ax = plt.subplots()
-        ax.plot(trj.time, MSD)
-        ax.set_xlabel('Simulation time (ps)')
-        ax.set_ylabel('MSD (nm^2)')
-        fig.savefig('msd_data/msd_{}K_{}.jpg'.format(job.statepoint()["T"], job.statepoint()["Seed"]))
-
-    np.savetxt(os.path.join(job.workspace(), 'diffusivity_and_msd_done.txt_1'), [1,1]) 
-    
-       
-def _run_overall(trj, mol):
-    D, MSD, x_fit, y_fit = calc_msd(trj)
-    return D, MSD
 
 def workspace_command(cmd):
     """Simple command to always go to the workspace directory"""
@@ -314,28 +218,18 @@ def workspace_command(cmd):
         ]
     )
     
-def _gromacs_str(op_name, gro_name, sys_name, job):
-    """Helper function, returns grompp command string for operation """
-    if op_name == 'em':
-        mdp = signac.get_project().fn('util/mdp_files/{}.mdp'.format(op_name))
-        cmd = ('gmx grompp -f {mdp} -c system.gro -p system.top -o {op}.tpr --maxwarn 1 && gmx mdrun -deffnm {op} -ntmpi 1')
-    else:
-        mdp = signac.get_project().fn('util/mdp_files/{}.mdp'.format(op_name))
-        cmd = ('gmx grompp -f {mdp} -c {gro}.gro -p system.top -o {op}.tpr --maxwarn 1 && gmx mdrun -deffnm {op} -ntmpi 1')
-    return workspace_command(cmd.format(mdp=mdp,op=op_name, gro=gro_name, sys=sys_name))
-
 
 def _gromacs_str_total(op_name_1, op_name_2, T, job):
     """Helper function, returns grompp command string for operation """
     mdp1 = signac.get_project().fn('util/mdp_files/{}-{}.mdp'.format(op_name_1, int(T)))
     mdp2 = signac.get_project().fn('util/mdp_files/{}-{}.mdp'.format(op_name_2, int(T)))
     cmd = (
-            'gmx grompp -f {mdp1} -c {gro1}.gro -p system.top -o {op1}.tpr --maxwarn 1 '\
-            '&& gmx mdrun -deffnm {op1} -ntmpi 1 '\
-            '&& gmx grompp -f {mdp2} -c {gro2}.gro -p system.top -o {op2}.tpr --maxwarn 1 '\
-            '&& gmx mdrun -deffnm {op2} -ntmpi 1'
+            'gmx_mpi grompp -f {mdp1} -c {gro1}.gro -p init.top -o {op1}.tpr --maxwarn 1 '\
+            '&& gmx_mpi mdrun -deffnm {op1} '\
+            '&& gmx_mpi grompp -f {mdp2} -c {gro2}.gro -p init.top -o {op2}.tpr --maxwarn 1 '\
+            '&& gmx_mpi mdrun -deffnm {op2} '
             )
-    return workspace_command(cmd.format(mdp1=mdp1, op1 = op_name_1, gro1 = 'system',
+    return workspace_command(cmd.format(mdp1=mdp1, op1 = op_name_1, gro1 = 'init',
                                         mdp2=mdp2, op2 = op_name_2, gro2 = op_name_1,
                                         ))
 

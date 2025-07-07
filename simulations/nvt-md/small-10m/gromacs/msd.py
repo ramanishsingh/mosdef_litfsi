@@ -11,7 +11,7 @@ import os
 import mdtraj as md
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use("pdf")
+# matplotlib.use("jpg")
 def tolerant_mean(arrs):
     lens = [len(i) for i in arrs]
     arr = np.ma.empty((np.max(lens),len(arrs)))
@@ -42,9 +42,9 @@ def main():
         for job in group:
             seed=job.sp.Seed
             length=job.sp.L
-            trj_file = os.path.join(job.workspace(), "sample.xtc")
+            trj_file = os.path.join(job.workspace(), "sample_unwrapped.xtc")
             one_traj = md.load(trj_file, top = top)
-            print("traj {} has {}ps prod".format(job, (one_traj.n_frames-5000)*0.005))
+            print("traj {} has {}ps prod".format(job, (one_traj.n_frames)))
             discard_frame = 500 ## discard first 500 ps
             if one_traj.n_frames>discard_frame:
                 traj_list.append(one_traj[discard_frame:])
@@ -55,12 +55,12 @@ def main():
             msd_f.compute(Li_xyz,reset=True)
             time=msd_f.msd
             for i in range(time.shape[0]):
-                time[i]=0+i*0.005
+                time[i]=0+i*1
             msdA2=1e2*msd_f.msd
-            timestep=0.005
-            start=2
+            timestep= 1 ## 1 ps per frame
+            start=1000
             start_index=int(start/timestep)
-            end=30
+            end=10000
             end_index=int(end/timestep)
             msd_fit=msdA2[start_index:end_index]
             time_fit= time[start_index:end_index]
@@ -79,11 +79,11 @@ def main():
             plt.axvline(x=start,color='red',alpha=0.3, ls='--')
             plt.axvline(x=end,color='red',alpha=0.3, ls='--')
             ax.set_xlabel('Time /ps')
-            ax.set_ylabel('MSD / A$^2$')
+            ax.set_ylabel(r"MSD / $\mathrm{\AA}^2$")
 
             msd_list.append(msdA2)
             msd_dat  = np.column_stack([time, msdA2])
-
+            fig.tight_layout()
             np.savetxt(
                 "msd_{}.txt".format(job),
                 msd_dat,
@@ -110,7 +110,7 @@ def main():
             average_msdA2, error = tolerant_mean(msd_boot)
             time=np.copy(average_msdA2)
             for i in range(time.shape[0]):
-                time[i]=0+i*0.005
+                time[i]=0+i*1
             fig, ax = plt.subplots()
 
             plt.loglog(time, average_msdA2)
@@ -118,12 +118,15 @@ def main():
             plt.axvline(x=start,color='red',alpha=0.3, ls='--')
             plt.axvline(x=end,color='red',alpha=0.3, ls='--')
             ax.set_xlabel('Time /ps')
-            ax.set_ylabel('MSD / A$^2$')
+            ax.set_ylabel(r"MSD / $\mathrm{\AA}^2$")
+
 
             msd_dat  = np.column_stack([time, average_msdA2])
             fig2, ax = plt.subplots()
             log_time=np.log10(time)
             log_msdA2=np.log10(average_msdA2)
+            ax.set_xlabel('log Time')
+            ax.set_ylabel(r"log MSD")
             log_time_fit=log_time[start_index:end_index]
             log_msdA2_fit=log_msdA2[start_index:end_index]
 
@@ -134,9 +137,11 @@ def main():
             log_msdA2_pred=reg.predict(log_time_fit)
             r2_score(log_msdA2_fit, log_msdA2_pred)
             print("scikitlearn R2 score is {}".format(r2_score(log_msdA2_fit, log_msdA2_pred)))
-            plt.plot(log_time, log_msdA2)
-            plt.plot(log_time_fit, log_msdA2_pred, label='pred')
+            plt.plot(log_time, log_msdA2, label = 'Average MSD')
+            plt.plot(log_time_fit, log_msdA2_pred, label='Predicted MSD')
             plt.legend()
+            fig.tight_layout()
+            fig2.tight_layout()
             np.savetxt(
                 "msd_boot_{}.txt".format(boot),
                 msd_dat,

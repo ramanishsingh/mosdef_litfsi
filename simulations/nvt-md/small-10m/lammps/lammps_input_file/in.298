@@ -37,7 +37,8 @@ timestep        1.0
 #minimize       1e-4 1e-6 10000 10000
 velocity        all create  ${mytemp} 314159265 units box
 velocity        all zero linear units box
-dump            DUMP all custom 1000 ${NAME}.lammpstrj id type x y z mol
+dump            DUMP1 all custom 1000 ${NAME}.lammpstrj id type x y z mol
+dump            DUMP2 all custom 1000 unwrap_${NAME}.lammpstrj id type xu yu zu mol
 thermo_style    custom step vol temp press ke pe etotal enthalpy evdwl ecoul epair ebond eangle edihed eimp emol elong etail lx ly lz xy xz yz pxy pxz pyz pxx pyy pzz
 thermo          1000
 #
@@ -47,7 +48,7 @@ thermo          1000
 fix             NVT all nvt temp ${mytemp} ${mytemp} 100.0 
 
 restart         50000 restart.${NAME}.1 restart.${NAME}.2
-run             20000000
+run             50000000
 
 
 write_restart   restart.${NAME}

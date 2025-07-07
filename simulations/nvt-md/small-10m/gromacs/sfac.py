@@ -32,7 +32,7 @@ def main():
             trj_file = os.path.join(job.workspace(), "sample.xtc")
             full_traj = md.load(trj_file, top = top)
             if full_traj.n_frames>500:
-                traj_list.append(full_traj[500:]) # discarding first 500 ps 
+                traj_list.append(full_traj) # discarding first 0 ps
 
         comb_traj = md.join(traj_list)
 
@@ -50,8 +50,8 @@ def main():
         L_min = 2 * 10 * np.pi / length[0]
         print("L_min is {}".format(L_min))
         print(
-            "The combined trajectory has {} frames = {} ps ".format(
-                comb_traj.n_frames, comb_traj.n_frames
+            "The combined trajectory has {} frames".format(
+                comb_traj.n_frames
             )
         )
         # print('All residues: %s' % [residue for residue in comb_traj.topology.residues])
@@ -72,7 +72,7 @@ def main():
         plt.grid(alpha=0.3)
         plt.xlabel("$\it{q} (1/\AA)$")
         plt.ylabel("$S(q)$")
-        plt.savefig("sfac.png")
+        plt.savefig("sfac.pdf")
         plt.close()
         q_overall = q
         s_overall = s

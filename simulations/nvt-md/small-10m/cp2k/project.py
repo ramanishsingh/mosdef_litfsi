@@ -136,7 +136,7 @@ def md_files(job):
 def run_md(job):
     from cp2kmdpy import runners_mpi
     import os
-
+    print(job)
     with job:
 
         a = runners_mpi.run_md(job.doc.input_filename, job.doc.output_filename, 72)
